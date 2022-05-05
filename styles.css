@@ -26,3 +26,26 @@ button{
     color: black;
 }
 
+.white_container{
+  background-color: white;
+  width: 39.5%;
+  height: 300px;
+  left: 30%;
+  margin-top: 50px;
+  position: relative;
+}
+.countdown{
+  color: red;
+  text-align: center;
+  position: relative;
+  top: -185px;
+  font-size: 70px;
+}
+
+.rounddisplay{
+  text-align: center;
+  top: -360px;
+  position: relative;
+  color:#001c0d;
+  font-size: 40px;
+}
