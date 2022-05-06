@@ -1,21 +1,7 @@
-import { skipPartiallyEmittedExpressions } from "../node_modules/typescript/lib/typescript";
-
-let zusammengerechnet: number;
+import { counter, roundDisplay, round, time, break_time } from "./myModule";
+import { secondsToHms } from "./myOtherModule";
 let timeUp: boolean = false;
-const round = <HTMLInputElement>document.getElementById("rounds");
-const time = <HTMLInputElement>document.getElementById("time");
-const break_time = <HTMLInputElement>document.getElementById("break_time");
-const div = <HTMLDivElement>document.getElementById("test");
-
-const body = document.body;
-const counter = document.createElement("div");
-const roundDisplay = document.createElement("div");
-counter.classList.add("countdown");
-roundDisplay.classList.add("rounddisplay");
 counter.innerText = "Bitte Zeit ausfüllen";
-body.append(counter);
-body.append(roundDisplay);
-
 round.addEventListener("change", test);
 time.addEventListener("change", test);
 break_time.addEventListener("change", test);
@@ -51,11 +37,11 @@ async function start() {
       }
     }
   }
+  counter.innerText = "Bitte Zeit ausfüllen";
 }
 
 // Startet Counter
 let button = document.getElementById("startButton");
-console.log(button);
 button?.addEventListener("click", function () {
   start();
 });
@@ -63,12 +49,10 @@ button?.addEventListener("click", function () {
 // Countdown
 function startTimer(zeit: any) {
   timeUp = false;
-  console.log(zeit);
   counter.innerText = secondsToHms(zeit);
 
   window.setTimeout(function () {
     countdown(zeit);
-    console.log(zeit);
   }, 1000);
 }
 function countdown(zeit: any) {
@@ -80,20 +64,8 @@ function countdown(zeit: any) {
     }, 1000);
   } else {
     timeUp = true;
-    console.log("timeUp= true");
   }
 }
 function Sleep(milliseconds: number) {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
-}
-function secondsToHms(d: any) {
-  d = Number(d);
-
-  var h = Math.floor(d / 3600);
-  var m = Math.floor((d % 3600) / 60);
-  var s = Math.floor((d % 3600) % 60);
-
-  return (
-    ("0" + h).slice(-2) + ":" + ("0" + m).slice(-2) + ":" + ("0" + s).slice(-2)
-  );
 }
