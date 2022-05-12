@@ -36,17 +36,29 @@ async function start() {
         runden--;
       }
     }
+    if (!timeUp) {
+      startButton?.setAttribute("disabled", "true");
+    }
   }
   counter.innerText = "Bitte Zeit ausfüllen";
+  startButton?.removeAttribute("disabled");
 }
 
 // Startet Counter
-let button = document.getElementById("startButton");
-button?.addEventListener("click", function () {
+let startButton = document.getElementById("startButton");
+startButton?.addEventListener("click", function () {
   start();
 });
 
+let resetButton = document.getElementById("resetButton");
+resetButton?.addEventListener("click", function () {
+  location.reload();
+});
+
+
+
 // Countdown
+
 function startTimer(zeit: any) {
   timeUp = false;
   counter.innerText = secondsToHms(zeit);
@@ -66,6 +78,8 @@ function countdown(zeit: any) {
     timeUp = true;
   }
 }
+
+// Quelle: https://www.codegrepper.com/code-examples/typescript/typescript+sleep
 function Sleep(milliseconds: number) {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
