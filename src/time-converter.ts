@@ -1,4 +1,3 @@
-
 export function secondsToHms(d: any) {
   d = Number(d);
 
